@@ -10,7 +10,9 @@ import com.bumptech.glide.Glide
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.R
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.model.Category
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(
+    private val onItemClick: (Category) -> Unit
+) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private var categories: List<Category> = emptyList()
 
@@ -29,6 +31,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bind(categories[position])
+        holder.itemView.setOnClickListener {
+            onItemClick(categories[position])
+        }
     }
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

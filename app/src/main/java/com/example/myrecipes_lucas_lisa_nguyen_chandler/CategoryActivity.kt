@@ -1,5 +1,6 @@
 package com.example.myrecipes_lucas_lisa_nguyen_chandler
 
+import android.content.Intent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,11 @@ class CategoryActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewCategories)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        categoryAdapter = CategoryAdapter()
+        categoryAdapter = CategoryAdapter { category ->
+            val intent = Intent(this, RecipeListActivity::class.java)
+            intent.putExtra("category_name", category.strCategory)
+            startActivity(intent)
+        }
         recyclerView.adapter = categoryAdapter
 
         viewModel.categories.observe(this) { categories ->
