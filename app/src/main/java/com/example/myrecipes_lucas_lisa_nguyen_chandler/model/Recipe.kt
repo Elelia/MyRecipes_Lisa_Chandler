@@ -9,3 +9,4 @@ data class Recipe(
     val strMeal: String,
     val strMealThumb: String
 )
+

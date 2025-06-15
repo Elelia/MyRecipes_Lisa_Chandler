@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.adapter.CategoryAdapter
@@ -31,6 +32,7 @@ class CategoryActivity : AppCompatActivity() {
             categoryAdapter.submitList(categories)
         }
 
+        Log.d("DEBUG", "→ Appel à viewModel.loadCategories()")
         viewModel.loadCategories()
     }
 }

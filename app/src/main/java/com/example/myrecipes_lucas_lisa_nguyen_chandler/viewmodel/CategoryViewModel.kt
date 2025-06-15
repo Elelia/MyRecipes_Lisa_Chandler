@@ -1,4 +1,5 @@
 package com.example.myrecipes_lucas_lisa_nguyen_chandler.viewmodel
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.LiveData
@@ -16,10 +17,13 @@ class CategoryViewModel : ViewModel() {
 
     fun loadCategories() {
         viewModelScope.launch {
+            Log.d("DEBUG", "→ Coroutine lancée")
             try {
                 val response = repository.getCategories()
+                Log.d("DEBUG", "Réponse API : ${response.categories.size} catégories")
                 _categories.postValue(response.categories)
             } catch (e: Exception) {
+                Log.e("DEBUG", "Erreur API : ${e.message}")
                 e.printStackTrace()
             }
         }
