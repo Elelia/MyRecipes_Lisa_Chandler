@@ -56,7 +56,8 @@ class RecipeDetailActivity : BaseActivity() {
     }
 
     private fun afficherDetails(meal: RecipeDetail) {
-        // Exemple
+        title = meal.strMeal
+
         findViewById<TextView>(R.id.textTitle).text = meal.strMeal
         findViewById<TextView>(R.id.textCategory).text = meal.strCategory
         findViewById<TextView>(R.id.textArea).text = meal.strArea

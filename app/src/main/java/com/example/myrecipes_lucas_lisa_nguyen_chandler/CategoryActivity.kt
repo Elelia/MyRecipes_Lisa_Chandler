@@ -23,6 +23,8 @@ class CategoryActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
+        title = "Catégories"
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewCategories)
         recyclerView.layoutManager = LinearLayoutManager(this)
         categoryAdapter = CategoryAdapter { category ->
