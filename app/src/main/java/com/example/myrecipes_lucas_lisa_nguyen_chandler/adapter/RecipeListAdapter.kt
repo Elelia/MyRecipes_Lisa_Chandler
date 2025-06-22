@@ -10,7 +10,9 @@ import com.bumptech.glide.Glide
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.R
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.model.Recipe
 
-class RecipeListAdapter : RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
+class RecipeListAdapter(
+    private val onItemClick: (Recipe) -> Unit
+) : RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
 
     private var recipes: List<Recipe> = emptyList()
 
@@ -29,6 +31,12 @@ class RecipeListAdapter : RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolde
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.bind(recipes[position])
+        val recipe = recipes[position]
+        holder.bind(recipe)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(recipe)
+        }
     }
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

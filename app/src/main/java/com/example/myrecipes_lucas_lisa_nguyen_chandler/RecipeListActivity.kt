@@ -1,4 +1,5 @@
 package com.example.myrecipes_lucas_lisa_nguyen_chandler
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,11 @@ class RecipeListActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewRecipes)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recipeAdapter = RecipeListAdapter()
+        recipeAdapter = RecipeListAdapter { recipe ->
+            val intent = Intent(this, RecipeDetailActivity::class.java)
+            intent.putExtra("meal_id", recipe.idMeal)
+            startActivity(intent)
+        }
         recyclerView.adapter = recipeAdapter
 
         // Charger les recettes
