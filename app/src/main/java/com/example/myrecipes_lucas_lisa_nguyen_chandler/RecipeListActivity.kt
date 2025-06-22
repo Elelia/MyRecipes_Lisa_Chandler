@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RecipeListActivity : AppCompatActivity() {
+class RecipeListActivity : BaseActivity() {
 
     private lateinit var recipeAdapter: RecipeListAdapter
 

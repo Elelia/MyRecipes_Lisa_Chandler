@@ -9,7 +9,5 @@ data class RecipeDetail (
     val strArea: String?,
     val strInstructions: String?,
     val strMealThumb: String?,
-    val strIngredient1: String?, val strMeasure1: String?,
-    val strIngredient2: String?, val strMeasure2: String?,
-    // ... jusqu’à 20 (car l’API a 20 ingrédients max)
+    val ingredients: List<Pair<String, String>>
 )

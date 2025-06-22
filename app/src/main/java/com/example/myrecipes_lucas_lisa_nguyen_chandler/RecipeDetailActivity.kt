@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RecipeDetailActivity : AppCompatActivity() {
+class RecipeDetailActivity : BaseActivity() {
     private lateinit var currentMeal: RecipeDetail
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,14 +64,9 @@ class RecipeDetailActivity : AppCompatActivity() {
         Glide.with(this).load(meal.strMealThumb).into(findViewById(R.id.imageRecipe))
 
         // Ingredients + mesures dynamiques
-        val ingredients = mutableListOf<String>()
-        for (i in 1..20) {
-            val ingredient = RecipeDetail::class.java.getDeclaredField("strIngredient$i").get(meal) as? String
-            val measure = RecipeDetail::class.java.getDeclaredField("strMeasure$i").get(meal) as? String
-            if (!ingredient.isNullOrBlank()) {
-                ingredients.add("• $ingredient : $measure")
-            }
+        val ingredientsText = meal.ingredients.joinToString("\n") { (ingredient, measure) ->
+            "• $ingredient : $measure"
         }
-        findViewById<TextView>(R.id.textIngredients).text = ingredients.joinToString("\n")
+        findViewById<TextView>(R.id.textIngredients).text = ingredientsText
     }
 }

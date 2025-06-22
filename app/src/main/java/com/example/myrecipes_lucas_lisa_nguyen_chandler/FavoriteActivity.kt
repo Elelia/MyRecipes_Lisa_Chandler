@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.adapter.FavoriteAdapter
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.viewmodel.FavoriteViewModel
 
-class FavoriteActivity : AppCompatActivity() {
+class FavoriteActivity : BaseActivity() {
 
     private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var adapter: FavoriteAdapter

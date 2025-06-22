@@ -14,7 +14,7 @@ import com.example.myrecipes_lucas_lisa_nguyen_chandler.adapter.CategoryAdapter
 import com.example.myrecipes_lucas_lisa_nguyen_chandler.viewmodel.CategoryViewModel
 import com.google.android.material.navigation.NavigationView
 
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : BaseActivity() {
 
     private val viewModel: CategoryViewModel by viewModels()
     private lateinit var categoryAdapter: CategoryAdapter
@@ -38,35 +38,5 @@ class CategoryActivity : AppCompatActivity() {
 
         Log.d("DEBUG", "→ Appel à viewModel.loadCategories()")
         viewModel.loadCategories()
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        val navView = findViewById<NavigationView>(R.id.navigation_view)
-
-        val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar,
-            R.string.navigation_drawer_open, R.string.navigation_drawer_close
-        )
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        navView.setNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_categories -> {
-                    // Tu es déjà sur CategoryActivity, optionnel : rafraîchir
-                    true
-                }
-                R.id.nav_favorites -> {
-                    val intent = Intent(this, FavoriteActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }.also {
-                drawerLayout.closeDrawers()
-            }
-        }
     }
 }
